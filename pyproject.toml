@@ -1,0 +1,45 @@
+[project]
+name = "fowt-mooring-twin"
+version = "0.1.0"
+description = "Physics-Informed Digital Twin for FOWT Mooring Line Fatigue Prediction"
+requires-python = ">=3.10"
+dependencies = [
+    # Core scientific computing
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "pandas>=2.0",
+    "h5py>=3.8",
+    
+    # OpenFAST tooling
+    "openfast-toolbox>=3.0",
+    
+    # Fatigue analysis
+    "fatpack>=0.7",
+    
+    # Visualization & Dashboard
+    "plotly>=5.15",
+    "dash>=2.14",
+    "dash-bootstrap-components>=1.5",
+    "matplotlib>=3.7",
+    
+    # ML (PyTorch installed separately via CUDA index)
+    # pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+    
+    # Configuration & utilities
+    "pyyaml>=6.0",
+    "tqdm>=4.65",
+    "joblib>=1.3",
+    
+    # Metocean data access
+    "cdsapi>=0.6",
+    "netCDF4>=1.6",
+    "xarray>=2023.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "ruff>=0.1",
+]
