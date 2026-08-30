@@ -2,8 +2,8 @@
 
 **This project replaces computationally expensive MoorDyn tension calculations with a neural-network surrogate that predicts mooring-line tension from 6-DOF FOWT motion, enabling real-time structural fatigue estimation in a C#/Unity runtime.**
 
-![Digital Twin Demo](assets/demo.gif)
-*(Above: Real-time inference in Unity. The neural surrogate predicts mooring tension from simulated 6-DOF telemetry, feeding a Rainflow counting algorithm that visually degrades the asset based on accumulated fatigue damage.)*
+![Digital Twin Demo](assets/unity_demo.gif)
+*Real-time digital twin inference running in Unity 6. Platform motion is visually amplified (15x heave, 2x surge) for presentation clarity.*
 
 ---
 
@@ -89,8 +89,8 @@ Platform position alone does not uniquely characterize the instantaneous dynamic
 
 ### 4.3 Neural Surrogate Architecture
 The model is a deterministic Multi-Layer Perceptron (MLP) trained in PyTorch.
-* **Architecture:** `18 → 128 → 128 → 64 → 32 → 3`
-* **Activation:** ReLU
+* **Architecture:** `18 → 256 → 256 → 256 → 256 → 3`
+* **Activation:** Tanh (Switched from ReLU/Fourier to provide smooth kinematic derivatives)
 * **Optimizer:** Adam (lr=0.001)
 * **Loss Function:** MSE
 
