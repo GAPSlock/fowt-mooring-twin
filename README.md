@@ -31,7 +31,8 @@
 
 The following video demonstrates the ONNX neural network predicting tensions at 50 Hz, driving the Miner's Rule fatigue accumulation and visual rusting on the mooring lines. 
 
-<video src="assets/inspector_demo.mp4" controls="controls" muted="muted" style="max-width: 100%;"></video>
+[**Click here to watch the full 1-minute Demonstration Video (MP4)**](assets/inspector_demo.mp4)  
+*(Note: Due to file size limits, the full HD video is hosted in the assets folder. Click the link above to view the real-time Unity Inspector telemetry and fatigue accumulation).*
 
 ---
 
