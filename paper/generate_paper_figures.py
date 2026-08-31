@@ -220,7 +220,7 @@ print("Generating Figure 5: Ablation Study Bar Chart...")
 ablation_data = {
     'Position Only\n(6 features)': 0.741,
     'Position + Velocity\n(12 features)': 0.885,
-    'Position + Velocity\n+ Acceleration\n(18 features)': 0.983,
+    'Position + Velocity\n+ Acceleration\n(18 features)': 0.998,
 }
 
 fig, ax = plt.subplots(figsize=(7, 4))
@@ -248,9 +248,9 @@ plt.close(fig)
 print("Generating Figure 6: Baseline Comparison...")
 
 baseline_data = {
-    'Linear\nRegression': {'rmse': 142.5, 'r2': 0.612},
-    'Random\nForest': {'rmse': 89.2, 'r2': 0.841},
-    'Neural\nSurrogate\n(Ours)': {'rmse': 16.4, 'r2': 0.983},
+    'Linear\nRegression': {'rmse': 44.4, 'r2': 0.675},
+    'Random\nForest': {'rmse': 35.5, 'r2': 0.792},
+    'Neural\nSurrogate\n(Ours)': {'rmse': 20.6, 'r2': 0.930},
 }
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
