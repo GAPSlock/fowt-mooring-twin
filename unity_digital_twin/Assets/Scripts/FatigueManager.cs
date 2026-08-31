@@ -116,9 +116,9 @@ public class FatigueManager : MonoBehaviour
         float cyclesToFailure = K_curve * Mathf.Pow(stressRange_MPa, -m_curve);
         float fractionalDamage = 0.5f / cyclesToFailure;
         
-        // Multiply by an additional 10000x artificial "demo factor" so it visibly degrades
+        // Multiply by an additional 100000x artificial "demo factor" so it visibly degrades
         // even during mild/calm sea states where real lines would last 25 years.
-        totalDamage += (fractionalDamage * simulationTimeMultiplier * 10000f);
+        totalDamage += (fractionalDamage * simulationTimeMultiplier * 100000f);
         remainingUsefulLife = Mathf.Clamp01(1.0f - totalDamage);
     }
 }
