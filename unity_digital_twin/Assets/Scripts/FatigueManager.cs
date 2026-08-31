@@ -19,16 +19,16 @@ public class FatigueManager : MonoBehaviour
     [Header("Fatigue State")]
     public float totalDamage = 0.0f;
     public float remainingUsefulLife = 1.0f;
-    public float simulationTimeMultiplier = 1000f; 
+    public float simulationTimeMultiplier = 10000000f; // Increased to make damage visually apparent
 
     [Header("Visual Degradation")]
     public Color cleanColor = new Color(0.3f, 0.3f, 0.3f); 
     public Color rustColor = new Color(0.6f, 0.2f, 0.05f); 
     
     private LineRenderer lineRenderer;
-    private float lastTension = 1500f;
+    private float lastTension = 0f;
     private float lastTrend = 0f;
-    private float lastExtremum = 1500f;
+    private float lastExtremum = 0f;
     private int frameCount = 0;
 
     void Start()

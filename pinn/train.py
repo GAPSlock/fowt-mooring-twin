@@ -11,7 +11,7 @@ from model import MooringPINN, SoftAdaptLoss
 from loss import compute_data_loss, compute_physics_loss
 
 # Configuration
-H5_DATA_PATH = "../data/training/batch_01.h5"
+H5_DATA_PATH = "../data/training/train_data.h5"
 BATCH_SIZE = 4096
 EPOCHS_ADAM = 2000
 STEPS_LBFGS = 1000

@@ -85,8 +85,8 @@ public class MooringDigitalTwin : MonoBehaviour
 
         // The ONNX model outputs normalized tensions. 
         // We must un-normalize them back into Kilonewtons (kN) using the exact mean/std from the training set.
-        float[] y_mean = new float[3] { 1526.47f, 1507.23f, 1530.12f };
-        float[] y_std = new float[3] { 48.33f, 55.86f, 49.11f };
+        float[] y_mean = new float[3] { 966.21f, 1507.24f, 958.32f };
+        float[] y_std = new float[3] { 13.94f, 55.87f, 13.90f };
 
         tensionLine1 = (preds[0] * y_std[0]) + y_mean[0];
         tensionLine2 = (preds[1] * y_std[1]) + y_mean[1];
