@@ -45,7 +45,7 @@ public class FatigueManager : MonoBehaviour
             simulationTimeMultiplier = 10000000f;
         }
 
-        // Auto-configure the 120-degree mooring layout if they are left at defaults
+        // Auto-configure the 120-degree mooring layout (FORCING it to override any weird Inspector values)
         float radius = 40f;
         float depth = -200f;
         float fairleadDepth = -14f;
@@ -57,15 +57,8 @@ public class FatigueManager : MonoBehaviour
 
         float angleRad = angleDeg * Mathf.Deg2Rad;
         
-        // Only auto-set if the user hasn't explicitly customized them
-        if (seabedAnchor == new Vector3(30f, -40f, 30f))
-        {
-            seabedAnchor = new Vector3(Mathf.Sin(angleRad) * 800f, depth, Mathf.Cos(angleRad) * 800f);
-        }
-        if (fairleadOffset == new Vector3(5f, -2f, 5f))
-        {
-            fairleadOffset = new Vector3(Mathf.Sin(angleRad) * radius, fairleadDepth, Mathf.Cos(angleRad) * radius);
-        }
+        seabedAnchor = new Vector3(Mathf.Sin(angleRad) * 800f, depth, Mathf.Cos(angleRad) * 800f);
+        fairleadOffset = new Vector3(Mathf.Sin(angleRad) * radius, fairleadDepth, Mathf.Cos(angleRad) * radius);
     }
 
     void Update()
@@ -73,7 +66,7 @@ public class FatigueManager : MonoBehaviour
         if (digitalTwin == null) return;
         frameCount++;
 
-        // 1. Draw the dynamic rope stretching from the seabed to the moving turbine
+        // 1. Update line positions
         lineRenderer.SetPosition(0, seabedAnchor);
         Vector3 attachmentPointOnTurbine = digitalTwin.transform.TransformPoint(fairleadOffset);
         lineRenderer.SetPosition(1, attachmentPointOnTurbine);
@@ -122,7 +115,9 @@ public class FatigueManager : MonoBehaviour
         float cyclesToFailure = K_curve * Mathf.Pow(stressRange_MPa, -m_curve);
         float fractionalDamage = 0.5f / cyclesToFailure;
         
-        totalDamage += (fractionalDamage * simulationTimeMultiplier);
+        // Multiply by an additional 10000x artificial "demo factor" so it visibly degrades
+        // even during mild/calm sea states where real lines would last 25 years.
+        totalDamage += (fractionalDamage * simulationTimeMultiplier * 10000f);
         remainingUsefulLife = Mathf.Clamp01(1.0f - totalDamage);
     }
 }
