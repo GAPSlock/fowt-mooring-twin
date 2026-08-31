@@ -38,6 +38,7 @@ public class FatigueManager : MonoBehaviour
         // Setup the physical rope visualizer
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
+        lineRenderer.useWorldSpace = true;
 
         // Force multiplier override so old Unity Inspector values don't break the visuals
         if (simulationTimeMultiplier < 1000000f) 

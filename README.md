@@ -110,9 +110,9 @@ To investigate whether a deep neural network was mathematically necessary, the s
 
 | Model | RMSE (kN) | R² | Inference Latency |
 | :--- | :--- | :--- | :--- |
-| Linear Regression | 142.5 | 0.612 | 0.1 ms |
-| Random Forest | 89.2 | 0.841 | 8.4 ms |
-| **Neural Surrogate (Ours)** | **16.4** | **0.983** | **1.2 ms** |
+| Linear Regression | 44.4 | 0.675 | < 0.1 ms |
+| Random Forest | 35.5 | 0.792 | 8.4 ms |
+| **Neural Surrogate (Ours)** | **20.6** | **0.930** | **0.2 ms** |
 
 ![Tension Prediction Parity](assets/scatter_parity_plot.png)
 *(Above: A 45-degree parity plot showing predicted vs. MoorDyn reference tension for Mooring Line 2 [Leeward]).*
