@@ -38,6 +38,34 @@ public class FatigueManager : MonoBehaviour
         // Setup the physical rope visualizer
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
+
+        // Force multiplier override so old Unity Inspector values don't break the visuals
+        if (simulationTimeMultiplier < 1000000f) 
+        {
+            simulationTimeMultiplier = 10000000f;
+        }
+
+        // Auto-configure the 120-degree mooring layout if they are left at defaults
+        float radius = 40f;
+        float depth = -200f;
+        float fairleadDepth = -14f;
+        float angleDeg = 0f;
+
+        if (lineNumber == 1) angleDeg = 180f;
+        if (lineNumber == 2) angleDeg = 60f;
+        if (lineNumber == 3) angleDeg = 300f;
+
+        float angleRad = angleDeg * Mathf.Deg2Rad;
+        
+        // Only auto-set if the user hasn't explicitly customized them
+        if (seabedAnchor == new Vector3(30f, -40f, 30f))
+        {
+            seabedAnchor = new Vector3(Mathf.Sin(angleRad) * 800f, depth, Mathf.Cos(angleRad) * 800f);
+        }
+        if (fairleadOffset == new Vector3(5f, -2f, 5f))
+        {
+            fairleadOffset = new Vector3(Mathf.Sin(angleRad) * radius, fairleadDepth, Mathf.Cos(angleRad) * radius);
+        }
     }
 
     void Update()
@@ -74,7 +102,7 @@ public class FatigueManager : MonoBehaviour
         if (trend * lastTrend < 0) 
         {
             float tensionRange_kN = Mathf.Abs(currentTension - lastExtremum);
-            if (tensionRange_kN > 5.0f) CalculateFatigueDamage(tensionRange_kN);
+            if (tensionRange_kN > 2.0f) CalculateFatigueDamage(tensionRange_kN);
             lastExtremum = currentTension;
         }
         if (Mathf.Abs(trend) > 0.001f) lastTrend = trend;

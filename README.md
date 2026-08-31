@@ -33,7 +33,6 @@ The following video demonstrates the ONNX neural network predicting tensions at 
 
 Watch the full 1-minute real-time simulation walkthrough here: [inspector_demo.mp4](assets/inspector_demo.mp4)
 
-> **Note on Video Visuals**: The tension values displayed in the Unity Inspector during this recording (e.g., ~1600 kN for Lines 1 and 3) were inflated due to a since-patched un-normalization bug in the C# script. The actual tensions for Lines 1 and 3 operate around ~960 kN, as correctly reflected in the current repository codebase and the research paper.  
 *(Note: Due to file size limits, the full HD video is hosted in the assets folder. Click the link above to view the real-time Unity Inspector telemetry and fatigue accumulation).*
 
 ---

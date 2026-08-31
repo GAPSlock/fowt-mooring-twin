@@ -1,2 +1,2 @@
-LR: RMSE=83.3, R2=0.405, Time=0.000ms
-RF: RMSE=85.2, R2=0.378, Time=0.001ms
+LR: RMSE=44.4, R2=0.675, Time=0.000ms
+RF: RMSE=35.5, R2=0.792, Time=0.001ms

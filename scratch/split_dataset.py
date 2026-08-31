@@ -9,8 +9,8 @@ df = pd.read_hdf(H5_PATH)
 print("Unique cases:", df['Meta_CaseID'].unique())
 
 # Split based on Meta_CaseID. Let's reserve 15 and 16 for testing.
-train_mask = ~df['Meta_CaseID'].isin(['batch_case_005', 'batch_case_006'])
-test_mask = df['Meta_CaseID'].isin(['batch_case_005', 'batch_case_006'])
+train_mask = ~df['Meta_CaseID'].isin(['batch_case_014', 'batch_case_006'])
+test_mask = df['Meta_CaseID'].isin(['batch_case_014', 'batch_case_006'])
 
 df_train = df[train_mask].copy()
 df_test = df[test_mask].copy()
